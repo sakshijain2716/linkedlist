@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+    int data;
+    Node *next;
+    Node(int val)
+    {
+        data=val;
+        next = NULL;
+        
+    }
+    
+};
+int main()
+{
+    Node *head = new Node(4);
+    head->next = new Node(8);
+    head->next->next  = new Node(16);
+
+          //insertion at begin
+  
+  Node *temp = new Node(12);
+  temp->next = head;
+  head = temp;
+  cout<<head->data;
+  
+
+}
