@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+    int data;
+    Node *next;
+    Node(int val)
+    {
+        data=val;
+        next = NULL;
+        
+    }
+    
+};
+void Printll(Node *head)
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<endl;
+        head = head->next;
+    }
+    
+}
+int main()
+{
+    Node *head = new Node(4);
+    head->next = new Node(8);
+    head->next->next  = new Node(16);
+    head->next->next->next = new Node(25);
+    head->next->next->next->next = new Node(32);
+    
+  Node *temp = head;      
+  int length=0;
+  while(temp!=NULL)       //length
+  {
+      length++;
+      temp=temp->next;
+  }
+  temp=head;
+temp = temp->next;
+delete(head);
+ Printll(temp);
+  
+}
+
+
+
+    
