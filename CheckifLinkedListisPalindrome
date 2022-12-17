@@ -1,0 +1,60 @@
+class Solution{
+  public:
+   
+    bool isPalindrome(Node *root)
+    {
+        //base case
+        if(root==NULL || root->next==NULL)
+         return 1;
+        int length=0;
+   Node *temp=root;            
+   while(temp!=NULL)            //length
+   {
+       temp = temp->next;
+       length++;
+   }
+   
+   Node *curr;
+   temp=root;
+   int mid = length/2,flag=0;
+ 
+    for(int i=0 ; i<mid-1 ; i++)
+    {
+        temp=temp->next;
+    }
+       if(length%2!=0)
+       curr = temp->next->next;
+       else
+       curr = temp->next;
+       temp->next=NULL;
+       temp=root;
+      
+       Node *prev = NULL;           //reverse
+       while(curr!=NULL)
+       {
+           Node *res = curr->next;
+           curr->next = prev;
+           prev = curr;
+           curr = res;
+       }
+       
+       curr = prev;
+       
+       
+       while(curr!=NULL)
+       {
+           if(temp->data!=curr->data)
+           {
+               flag=1;
+               break;
+           }
+           temp=temp->next;
+           curr=curr->next;
+       }
+
+   if(flag==1)
+   return false;
+   else
+   return true;
+    }
+};
