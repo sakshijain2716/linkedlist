@@ -1,0 +1,21 @@
+Node *removeDuplicates(Node *head)
+{
+ // your code goes here
+ if(head==NULL)
+ return head;
+
+ Node *res = head;
+ while(res->next!=NULL)
+ {
+ if(res->data == res->next->data)
+ {
+     Node *del = res->next;
+     res->next = res->next->next;
+     delete(del);
+ }
+ else
+ res = res->next;
+ 
+ }
+ return head;
+}
