@@ -1,0 +1,46 @@
+class Solution {
+public:
+    ListNode* doubleIt(ListNode* head) {
+        // long long n=0;
+        ListNode* temp = head;
+         vector<int> v;
+        while(temp!=NULL)
+        {
+            v.push_back(temp->val);
+            temp = temp->next;
+        }
+        int carry =0 ;
+        vector<int>new_n;
+        for(int i=v.size()-1 ; i>=0 ; i--)
+        {
+            int num = v[i]*2+carry;
+            string str = to_string(num);
+            if(str.size()==1)
+            {
+                new_n.push_back(str[0]-'0');
+                carry=0;
+            }
+            else
+            {
+                new_n.push_back(str[1]-'0');
+                carry = str[0]-'0';
+            }
+        }
+        if(carry>0)
+        new_n.push_back(carry);
+
+        reverse(new_n.begin(),new_n.end());
+        ListNode* res = new ListNode(0);
+        ListNode* curr = res;
+    
+        int i=0;
+        while(i<new_n.size())
+        {
+            ListNode* dummy = new ListNode(new_n[i]);
+            res->next = dummy;
+            res = dummy;
+            i++;
+        }
+        return curr->next;
+    }
+};
